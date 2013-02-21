@@ -78,6 +78,7 @@ class HtmlsController extends AppController {
 	}
 
     public function contact() {
-
+    }
+    public function news() {
     }
 }
