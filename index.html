@@ -1,0 +1,642 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>   
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Destination Guide</title>
+        <!--<link rel="stylesheet" type="text/css" href="http://cdn.webrupee.com/font" />-->
+        <link href="css/colorbox.css" rel="stylesheet" type="text/css"/>
+        <link href="css/global.css" rel="stylesheet" type="text/css"/>
+
+        <script src="js/jquery-1.8.3.min.js" type="text/javascript"></script>
+        <script src="js/jquery.tinyscrollbar.min.js" type="text/javascript"></script>
+        <script src="js/custom.js" type="text/javascript"></script>
+
+        <!--[if IE 6]>
+            <link href="css/ie6.css" rel="stylesheet" type="text/css"/>
+            <script src="js/DD_roundies_0.0.2a-min.js" type="text/javascript"></script>
+                <script type="text/javascript">
+                    DD_roundies.addRule('#slides .next, #slides .prev, #cboxClose, .wishListIcon');
+            </script>
+        <![endif]-->
+        <script src="js/jquery.colorbox-min.js" type="text/javascript"></script>
+        <script type="text/javascript" src="js/slides.min.jquery.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                //<![CDATA[
+                /*Left menu Accordion*/
+                $(".activeLftCnt ul.lftNavList").show();
+                $(".lftNavTitle").click(function(){
+                    if($(this).parents(".lftNavCnt").hasClass("activeLftCnt")){
+                        $(this).next('ul.lftNavList').slideUp(800);
+                        $(this).parents(".lftNavCnt").removeClass("activeLftCnt");
+                        if(!($.browser.msie && $.browser.version=="6.0")){
+                            setTimeout(function() {
+                                oScrollbar1.tinyscrollbar_update('relative');
+                            }, 801);
+                        }
+                    }
+                    else{
+                        $('ul.lftNavList').slideUp(800);
+                        $(this).next('ul.lftNavList').slideDown(800);
+                        $(".lftNavCnt").removeClass("activeLftCnt");
+                        $(this).parents(".lftNavCnt").addClass("activeLftCnt");
+                        if(!($.browser.msie && $.browser.version=="6.0")){
+                            setTimeout(function() {
+                                oScrollbar1.tinyscrollbar_update('relative');
+                            }, 801);
+                        }
+                    }
+                    return false;
+                });
+                
+                /* for sticky navigation bar*/
+                if(!($.browser.msie && $.browser.version=="6.0")){
+                    var windowHeight = $(window).height();
+                    var viewportHeight = windowHeight - 105;
+                    $('.viewport').css({
+                        height: viewportHeight
+                    });
+                    var oScrollbar1 = $('#scrollbar1');
+                    oScrollbar1.tinyscrollbar();
+                    
+                    var destHdr = $(".destinationHdr");
+                    var destHdrHeight = $(".destinationHdr").height();
+                    var destHdrPos = destHdr.offset();
+                    var destCnt = $(".destContent");
+                    var lftNavSticky = $(".lftNavCntWrap");
+                    $(function () {
+                        $(window).scroll(function () {
+                            if ($(this).scrollTop() > destHdrPos.top) {
+                                destHdr.css({
+                                    "position":"fixed",
+                                    "top":0
+                                });
+                                destCnt.css({
+                                    "padding-top": destHdrHeight + 30
+                                });
+                                lftNavSticky.css({
+                                    "position":"fixed",
+                                    "top": destHdrHeight + 30
+                                });
+                                return false;
+                            }
+                            else {
+                                destHdr.css({
+                                    "position":"relative",
+                                    "top": 0
+                                });
+                                destCnt.css({
+                                    "padding-top": 0
+                                });
+                                lftNavSticky.css({
+                                    "position":"relative",
+                                    "top": 0
+                                });
+                                return false;
+                            }
+                        });
+                    });
+                }
+                
+                /* for popupbox */
+                $(".popupLink").colorbox({inline:true, width:"750px"});
+                $(".callbacks").colorbox({
+                    onOpen:function(){ alert('onOpen: colorbox is about to open'); },
+                    onLoad:function(){ alert('onLoad: colorbox has started to load the targeted content'); },
+                    onComplete:function(){ alert('onComplete: colorbox has displayed the loaded content'); },
+                    onCleanup:function(){ alert('onCleanup: colorbox has begun the close process'); },
+                    onClosed:function(){ alert('onClosed: colorbox has completely closed'); }
+                });    
+            })
+            
+            /* for slideshow(inside popupBox) */
+            $(function(){
+                $('#slides').slides({
+                    effect: 'fade',
+                    crossfade: true,
+                    preload: true,
+                    preloadImage: 'images/loading.gif',
+                    play: 5000,
+                    pause: 2500,
+                    hoverPause: true
+                });
+            });
+            //]]>
+        </script>
+    </head>
+
+    <body>
+        <div class="mainContent">
+            <div class="topContainer">
+                <div class="container">
+                    <ul class="breadcrumb clearfix">
+                        <li>
+                            <a href="#" title="">Destinations</a>
+                            <span></span>
+                        </li>
+                        <li>
+                            <a href="#" title="">India</a>
+                            <span></span>
+                        </li>
+                        <li>
+                            <a href="#" title="">Asia</a>
+                            <span></span>
+                        </li>
+                        <li>Leh</li>
+                    </ul>
+                </div>
+                <div class="destinationHdr">
+                    <div class="container">
+                        <div class="destinationHdrCnt clearfix">
+                            <div class="destCity pullLeft">
+                                <img src="images/destImg1.jpg" alt="" />
+                                <span>Bangkok</span>
+                            </div>
+                            <ul class="destNav pullRight">
+                                <li><a href="#">Why Here</a></li>
+                                <li class="active"><a href="#">What to do</a></li>
+                                <li><a href="#">Festivals &amp; Events</a></li>
+                                <li><a href="#">When to Visit</a></li>
+                                <li class="last"><a href="#">Plan it</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="destContent clearfix">
+                    <div class="destCntLft pullLeft">
+                        <div class="lftNavCntWrap" id="scrollbar1">
+                            <div class="scrollbar">
+                                <div class="track">
+                                    <div class="thumb">
+                                        <div class="end">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!--End: scrollbar -->
+                            <div class="viewport">
+                                <div class="overview">
+                                    <div class="lftNavCnt activeLftCnt">
+                                        <a href="#" class="lftNavTitle clearfix">
+                                            <span class="starMapIcon"></span>
+                                            <span class="pullLeft">
+                                                <b>Attractions</b>
+                                                What to See
+                                            </span>
+                                        </a>
+                                        <ul class="lftNavList">
+                                            <li class="first active">
+                                                <a href="#">
+                                                    <span class="pullLeft">All</span>
+                                                    <span class="countWrap">52</span> 
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <span class="pullLeft">Monuments</span>
+                                                    <span class="countWrap">6</span> 
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <span class="pullLeft">For Kids</span>
+                                                    <span class="countWrap">20</span> 
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <span class="pullLeft">Religious</span>
+                                                    <span class="countWrap">13</span> 
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <span class="pullLeft">Relaxation</span>
+                                                    <span class="countWrap">10</span> 
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <span class="pullLeft">Adventure</span>
+                                                    <span class="countWrap">8</span> 
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <span class="pullLeft">Nature</span>
+                                                    <span class="countWrap">17</span> 
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="lftNavCnt">
+                                        <a href="#" class="lftNavTitle clearfix">
+                                            <span class="activityIcon"></span>
+                                            <span class="pullLeft">
+                                                <b>Activities</b>
+                                                What to do
+                                            </span>
+                                        </a>
+                                        <ul class="lftNavList">
+                                            <li>
+                                                <a href="#">
+                                                    <span class="pullLeft">Religious</span>
+                                                    <span class="countWrap">13</span> 
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <span class="pullLeft">Relaxation</span>
+                                                    <span class="countWrap">10</span> 
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <span class="pullLeft">Adventure</span>
+                                                    <span class="countWrap">8</span> 
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <span class="pullLeft">Nature</span>
+                                                    <span class="countWrap">17</span> 
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="lftNavCnt">
+                                        <a href="#" class="lftNavTitle clearfix">
+                                            <span class="shopIcon"></span>
+                                            <span class="pullLeft">
+                                                <b>Shopping</b>
+                                                What to Buy
+                                            </span>
+                                        </a>
+                                        <ul class="lftNavList">
+                                            <li>
+                                                <a href="#">
+                                                    <span class="pullLeft">Adventure</span>
+                                                    <span class="countWrap">8</span> 
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <span class="pullLeft">Monuments</span>
+                                                    <span class="countWrap">6</span> 
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="lftNavCnt">
+                                        <a href="#" class="lftNavTitle clearfix">
+                                            <span class="foodIcon"></span>
+                                            <span class="pullLeft">
+                                                <b>Food</b>
+                                                What to Taste
+                                            </span>
+                                        </a>
+                                        <ul class="lftNavList">
+                                            <li>
+                                                <a href="#">
+                                                    <span class="pullLeft">Religious</span>
+                                                    <span class="countWrap">13</span> 
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <span class="pullLeft">Relaxation</span>
+                                                    <span class="countWrap">10</span> 
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <span class="pullLeft">Adventure</span>
+                                                    <span class="countWrap">8</span> 
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="lftNavCnt">
+                                        <a href="#" class="lftNavTitle clearfix">
+                                            <span class="nightlifeIcon"></span>
+                                            <span class="pullLeft">
+                                                <b>Nightlife &amp; <br />Entertainment</b>
+                                                What to Enjoy
+                                            </span>
+                                        </a>
+                                        <ul class="lftNavList">
+                                            <li>
+                                                <a href="#">
+                                                    <span class="pullLeft">Religious</span>
+                                                    <span class="countWrap">13</span> 
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <span class="pullLeft">Relaxation</span>
+                                                    <span class="countWrap">10</span> 
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <span class="pullLeft">Adventure</span>
+                                                    <span class="countWrap">8</span> 
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <span class="pullLeft">Nature</span>
+                                                    <span class="countWrap">17</span> 
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <span>&nbsp;</span>
+                    </div><!-- End: destCntLft-->
+
+                    <div class="destCntRht pullLeft">
+                        <h2 class="rhtCntHeading">Attractions to see </h2>
+                        <div class="destInfoWrap" id="main">
+                            <ul id="tiles">
+                                <li>
+                                    <a class="popupLink" href="#popupContent" title="">
+                                        <img src="images/listImg1.jpg" alt=""/>
+                                    </a>
+                                    <div class="destInfoBtmCnt">
+                                        <h4><a class="popupLink" href="#popupContent">Shanti Stupa</a></h4>
+                                        <p>
+                                            The palace was ruined and was massively destructed by Kashmiri cannons during the...
+                                        </p>
+                                        <div class="destTagCnt">
+                                            <span><i class="monumentsIcon"></i>Monuments</span>
+                                            <!--
+                                            <span><i class="forKidsIcon"></i>For Kids</span>
+                                            <span><i class="natureIcon"></i>Nature</span>
+                                            <span><i class="adventureIcon"></i>Adventure</span>
+                                            <span><i class="religiousIcon"></i>Religious</span>
+                                            <span><i class="relaxationIcon"></i>Relaxation</span>
+                                            -->
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="#" title=""> 
+                                        <img src="images/listImg2.jpg" alt=""/>
+                                    </a>
+                                    <div class="destInfoBtmCnt">
+                                        <h4><a href="#" title="">Safari Woods</a></h4>
+                                        <p>
+                                            A fantastic zoo in Bangkok, Safari World is divided into two parts. The first part, Safari Park is... 
+                                        </p>
+                                        <div class="destTagCnt">
+                                            <span><i class="forKidsIcon"></i>For Kids</span>
+                                            <span><i class="natureIcon"></i>Nature</span>
+                                            <span><i class="adventureIcon"></i>Adventure</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="#" title="">
+                                        <img src="images/listImg3.jpg" alt=""/>
+                                    </a>
+                                    <div class="destInfoBtmCnt">
+                                        <h4><a href="#" title="">Siam Niramit Show</a></h4>
+                                        <p>
+                                            A combination of dazzling performances and authentic Thai cuisine, the Siam Niramit Show...
+                                        </p>
+                                        <div class="destTagCnt">
+                                            <span><i class="forKidsIcon"></i>For Kids</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="#" title="">
+                                        <img src="images/listImg4.jpg" alt=""/>
+                                    </a>
+                                    <div class="destInfoBtmCnt">
+                                        <h4><a href="#" title="">Dream World</a></h4>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, ectetur adipiscing elit. Curabitur porta nssa diam, a aliquet...
+                                        </p>
+                                        <div class="destTagCnt">
+                                            <span><i class="forKidsIcon"></i>For Kids</span>
+                                            <span><i class="adventureIcon"></i>Adventure</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="#" title="">
+                                        <img src="images/listImg5.jpg" alt=""/>
+                                    </a>
+                                    <div class="destInfoBtmCnt">
+                                        <h4><a href="#" title="">Madam Tussauds Museum</a></h4>
+                                        <p>
+                                            The world-renowned Madame Tussauds Wax Museum opened another one of its branches in...
+                                        </p>
+                                        <div class="destTagCnt">
+                                            <span><i class="forKidsIcon"></i>For Kids</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="#" title="">
+                                        <img src="images/listImg6.jpg" alt=""/>
+                                    </a>
+                                    <div class="destInfoBtmCnt">
+                                        <h4><a href="#" title="">Siam Ocean World</a></h4>
+                                        <p>
+                                            The largest aquarium in Southeast Asia, Siam Ocean World is spread...
+                                        </p>
+                                        <div class="destTagCnt">
+                                            <span><i class="forKidsIcon"></i>For Kids</span>
+                                            <span><i class="adventureIcon"></i>Adventure</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="#" title="">
+                                        <img src="images/listImg7.jpg" alt=""/>
+                                    </a>
+                                    <div class="destInfoBtmCnt">
+                                        <h4><a href="#" title="">Wat Arun (Temple of Dawn)</a></h4>
+                                        <p>
+                                            One of the most famous landmarks of Bangkok, Wat Arun or the Temple of Dawn is a...
+                                        </p>
+                                        <div class="destTagCnt">
+                                            <span><i class="monumentsIcon"></i>Monuments</span>
+                                            <span><i class="religiousIcon"></i>Religious</span>
+                                            <span><i class="relaxationIcon"></i>Relaxation</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="#" title="">
+                                        <img src="images/listImg8.jpg" alt=""/>
+                                    </a>
+                                    <div class="destInfoBtmCnt">
+                                        <h4><a href="#" title="">Temple of Emerald Buddha</a></h4>
+                                        <p>
+                                            The Temple of Emerald Buddha or the Wat Phra Kaew is considered as the most sacred Buddhist...
+                                        </p>
+                                        <div class="destTagCnt">
+                                            <span><i class="monumentsIcon"></i>Monuments</span>
+                                            <span><i class="religiousIcon"></i>Religious</span>
+                                            <span><i class="relaxationIcon"></i>Relaxation</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="#" title="">
+                                        <img src="images/listImg9.jpg" alt=""/>
+                                    </a>
+                                    <div class="destInfoBtmCnt">
+                                        <h4><a href="#" title="">Wat Mahathat</a></h4>
+                                        <p>
+                                            One of the most remarkable Buddhist temples in Bangkok, Wat Mahathat is located in the heart...
+                                        </p>
+                                        <div class="destTagCnt">
+                                            <span><i class="monumentsIcon"></i>Monuments</span>
+                                            <span><i class="religiousIcon"></i>Religious</span>
+                                            <span><i class="relaxationIcon"></i>Relaxation</span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div><!-- End: destCntRht -->
+                </div>
+            </div>
+        </div>
+
+        <!--popupBox Content Starts here -->
+        <div class="popupBoxWrap">
+            <div id="popupContent" class="popupBoxCnt">
+                <div class="popupBoxCntTop clearfix">
+                    <h3 class="popupHeading">The Grand Palace</h3>
+                    <div class="popupPrevNextCnt clearfix">
+                        <a href="#" class="prevLink">Previous</a>
+                        <a href="#" class="nextLink">Next</a>
+                    </div>
+                </div>
+                <div class="popupBoxSliderWrap">
+                    <div class="sliderCnt">
+                        <div id="slides">
+                            <div class="slides_container">
+                                <div class="slide">
+                                    <a href="#" title="">
+                                        <img src="images/slide-1.jpg" width="700" height="410" alt="" />
+                                    </a>
+                                    <p class="caption">
+                                        <span>One line caption of picture above goes here</span> 
+                                        Photo credit: Dilbert's Boss
+                                    </p>
+                                </div>
+                                <div class="slide">
+                                    <a href="#" title="">
+                                        <img src="images/slide-2.jpg" width="700" height="410" alt="" />
+                                    </a>
+                                    <p class="caption">
+                                        <span>This is a caption 2</span> 
+                                        Photo credit: Ana
+                                    </p>
+                                </div>
+                                <div class="slide">
+                                    <a href="#" title="">
+                                        <img src="images/slide-3.jpg" width="700" height="410" alt="" />
+                                    </a>
+                                    <p class="caption">
+                                        <span>caption of picture</span> 
+                                        Photo credit: Dilbert
+                                    </p>
+                                </div>
+                            </div>
+                            <a href="#" class="prev"></a>
+                            <a href="#" class="next"></a>
+                        </div>
+                    </div>
+                </div><!-- End: popupBoxSliderWrap --> 
+                <div class="popupBoxMainCnt clearfix">
+                    <div class="popupCntLft">
+                        <h3>The Grand Palace</h3>
+                        <p>
+                            Located in the heart of Bangkok, on the banks of Chao Phraya River, the Grand Palace is a magnificent building 
+                            and one of the most popular tourist attractions of Bangkok. A combination of Thai and European architecture, 
+                            the Grand Palace was the erstwhile residence of the Kings of Siam and is used till date for royal ceremonies. 
+                            It is a complex of several buildings, halls, gardens and courtyards and is a must-visit when touring Bangkok.
+                        </p>
+                        <ul class="popupDestInfoList">
+                            <li class="clearfix">
+                                <span class="openingTimeIcon"></span>
+                                <p>
+                                    <b>Opening Time</b>
+                                    08:30 AM to 03:30 PM Daily
+                                </p>
+                            </li>
+                            <li class="clearfix">
+                                <span class="entranceFeeIcon"></span>
+                                <p>
+                                    <b>Entrance Fee</b>
+                                    350BH = <i class="WebRupee">Rs.</i>680.80
+                                    <select>
+                                        <option>in Indian Rupee (&#8377;)</option>
+                                        <option>in Dollar ($)</option>
+                                        <option>in Euro(&#8364;)</option>
+                                    </select>
+                                </p> 
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="popupCntRht">
+                        <a href="#" class="redBtn"><span class="wishListIcon"></span>Add to wish list</a>
+                        <div class="pkgCntBox">
+                            Part of our package starting from
+                            <span><i class="WebRupee">Rs.</i>39,990 per person</span>
+                            <a href="#" title="View Packages">View Packages<i class="viewPkgIcon"></i></a>
+                        </div>
+                        <div class="popupRhtTagsCnt">
+                            <span><i class="monumentsIcon"></i>Monuments</span>
+                            <span><i class="mostPopIcon"></i>Most Popular</span>
+                            <span><i class="hollyBollyIcon"></i>Hollywood / Bollywood</span>
+                        </div>
+                        <div class="rhtLocationCnt">
+                            <h4><span class="locationIcon"></span>Location</h4>
+                            <div class="rhtCntMapWrap">
+                                <img src="images/mapImg.jpg" alt=""/>
+                            </div>
+                            <p>Thanon Na Phra Lan, Phra Borom 
+                                Maha Ratchawang, Phra Nakhon, 
+                                Bangkok 10200, Thailand</p>
+                        </div>
+                    </div>
+                </div><!-- End: popupBoxMainCnt -->
+                <div class="popupBtmLinks clearfix">
+                    <a href="#" class="popupBtmPrev"><span></span> Previous</a>
+                    <a href="#" class="popupBtmNext">Next <span></span></a>
+                </div>
+            </div>
+        </div>
+        <!--End: popupBox Content -->
+
+        <!--For Image load issue -->
+        <script src="js/jquery.imagesloaded.js" type="text/javascript"></script>
+        <!--For Dynamic multicolumn layout-->
+        <script src="js/jquery.wookmark.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            //$("destInfoWrap").imagesLoaded(function() {
+            $(document).imagesLoaded(function() {
+                var options = {
+                    autoResize: true,
+                    container: $('#main'),
+                    offset: 16,
+                    itemWidth: 218
+                };
+                var handler = $('#tiles li');
+                handler.wookmark(options);
+            });
+        </script>
+    </body>
+</html>

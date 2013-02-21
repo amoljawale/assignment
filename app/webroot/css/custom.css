@@ -1,0 +1,20 @@
+body{
+    padding: 70px 0 0;
+}
+.links a{
+    margin: 0 10px 0 0;
+}
+.input{
+    float: left;
+    width: 250px;
+}
+.submit{
+    float: left;
+}
+label{
+    margin: 0 15px 0 0;
+}
+label, .search-query {
+    display: inline-block;
+
+}
